@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <style>
+      *{
+        padding: 0px;
+        margin: 0px;
+      }
+      .top{
+        padding: 10px 100px;
+      }
+      #container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+      .form-box{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: 350px;
+        margin: 30px 0px;
+      }
+      .form-box>div:first-child{
+        border: 1px solid blue;
+        display: flex;
+        gap: 50px;
+        justify-content: left;
+        padding: 15px 20px;
+      }
+      form{
+        border: 1px solid red;
+        width: 100%;
+        margin: 20px 0px;
+        display: flex;
+        flex-direction: column;
+      }
+      button{
+        border: 0px;
+        background-color: white;
+        font-size: 20px;
+      }
+      input {       
+        width: 300px;
+        padding: 3px 5px;
+        /* margin: 5px 10px; */
+      }      
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="logo">
+        <img width="200px" src="./GadgetPro_logo.png" alt="">
+      </div>
+    </div>
+    <div id="container">
+      <div class="form-box">
+
+        <div>
+          
+          <button id="signinbtn">Sign In</button>
+          <button id="registerbtn">Register</button>
+        </div>
+        
+        <div>
+
+          <form id="signUp">
+            <input type="text" id="name" placeholder="Name" required />
+            <br />
+            <input type="email" id="email" placeholder="E-mail" required />
+            <br />
+            <input type="password" id="password" placeholder="Password" required />
+            <br />
+            <input
+              type="password"
+              id="passwordChk"
+              placeholder="Re-enter Password"
+              required
+            />
+            <br />
+            <input type="submit" value="Register" />
+          </form>
+
+          <form id="signIn">
+            <input type="email" id="email1" placeholder="E-mail" required />
+            <br />
+            <input type="password" id="password1" placeholder="Password" required />
+            <br />
+            <input type="submit" value="Sign In"/>
+          </form>
+
+        </div>
+        
+      </div>
+      
+    </div>
+  </body>
+</html>
+<script>
+  let loginBtn = document.querySelector("#signinbtn");
+  let signUpBtn = document.querySelector("#registerbtn");
+  let signIn = document.querySelector("#signIn");
+  let signUp = document.querySelector("#signUp");
+
+  // we need to catch the users data file from localstorage.
+  let users = JSON.parse(localStorage.getItem("usersData")) || [];
+
+  // by default We want the signIn form to be hidden.
+  signUp.style.display = "none";
+
+  loginBtn.addEventListener("click", function () {
+    signUp.style.display = "none";
+    // we can use any display property to show the element in place of block (grid, flex,inline, block)
+    // generally we use block because we don't want to change our display style.
+    signIn.style.display = "flex";
+    //    we change the document title using title method
+    document.title = "Sign In";
+  });
+  signUpBtn.addEventListener("click", function () {
+    signIn.style.display = "none";
+    signUp.style.display = "flex";
+    document.title = "Sign Up";
+  });
+
+  signUp.addEventListener("submit", function (event) {
+    // we preventDefault() to stop page from refreshing
+    event.preventDefault();
+    // we check whether the email is in our database or not
+    let count = 0;
+    users.forEach(function (el) {
+      if (el.email === signUp.email.value) {
+        count++;
+      }
+    });
+    // if we found a user we alert
+    if (count > 0) {
+      alert("user already registered!");
+    }
+    // if users not found || email not found
+    else {
+      // we are checking if both passwords are same or not.
+      if (signUp.password.value != signUp.passwordChk.value) {
+        alert("passwords do not match!");
+      } else {
+        // we create an obj to store data of the user
+        let user = {
+          name: signUp.name.value,
+          email: signUp.email.value,
+          password: signUp.password.value,
+        };
+        // we push this object into users array
+        users.push(user);
+        // we store the array in localstorage
+        localStorage.setItem("usersData", JSON.stringify(users));
+        alert("Sign Up successful!");
+
+        // to reset all the input fields of a form we can use reset() method
+        signUp.reset();
+      }
+    }
+  });
+
+  signIn.addEventListener("submit", function (event) {
+    event.preventDefault();
+    let count = 0;
+    // we are creating a temp var to store user who is trying to login
+    let temp;
+    // we are checking whether the user is registered or not
+    users.forEach(function (el) {
+      if (el.email === signIn.email1.value) {
+        count++;
+        // when count is incremented or we found user, we are storing the user data;
+        temp = el;
+        // we are storing the user in our local storage so that we can access user data from different pages
+        localStorage.setItem("loggedUser", JSON.stringify(el));
+      }
+    });
+    // if we didn't find any user we alert
+    if (count == 0) {
+      alert("user not registered!");
+    }
+    // if we find user we check the password
+    else {
+      // we check the temp password with form password
+      if (temp.password != signIn.password1.value) {
+        alert("wrong password");
+      } else {
+        alert("login successful!");
+        // we can use n number of methods to change the page. here we are using assign() method
+        // window.location.assign('url')
+        window.location.assign("./index.html");
+      }
+    }
+  });
+</script>
