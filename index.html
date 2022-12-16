@@ -30,3 +30,40 @@
     </footer>
 </body>
 </html>
+
+<script>
+ let options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '6943bf36eemsh4feaafa4a140795p1f9e32jsn0377bc6a4c61',
+		'X-RapidAPI-Host': 'amazon24.p.rapidapi.com'
+	}
+};
+let arr= [];
+fetch('https://amazon24.p.rapidapi.com/api/product?categoryID=aps&keyword=iphone&country=US&page=1', options)
+	.then(response => response.json())
+	.then(response => {
+        // console.log(response,typeof(response))
+       arr = response.docs;
+        arr.forEach(item => {
+            let id = item.product_id
+            getProductById(id);
+        });
+    })
+	.catch(err => console.error(err));
+    function getProductById(id)
+    {
+            options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '6943bf36eemsh4feaafa4a140795p1f9e32jsn0377bc6a4c61',
+                'X-RapidAPI-Host': 'amazon24.p.rapidapi.com'
+            }   
+        };
+
+        fetch(`https://amazon24.p.rapidapi.com/api/product/${id}?country=US`, options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+            }
+</script>
