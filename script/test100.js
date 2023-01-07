@@ -1,4 +1,4 @@
-let gridview = JSON.parse(localStorage.getItem("allitems")) || [
+let saved = [
     {
         "title": "OnePlus Nord CE 2 Lite 5G (Black Dusk, 6GB RAM, 128GB Storage)",
         "price": "18999",
@@ -161,6 +161,10 @@ let gridview = JSON.parse(localStorage.getItem("allitems")) || [
         "category": "home&garden"
     }
 ];
+
+localStorage.setItem("allitems",JSON.stringify(saved));
+
+let gridview = JSON.parse(localStorage.getItem("allitems")) || saved;
 
 display(gridview)
 
