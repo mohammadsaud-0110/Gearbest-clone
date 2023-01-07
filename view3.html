@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrnoics & Office</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="./CSS/test100.css">
+    <link rel="stylesheet" href="./CSS/viewproducts.css">
+</head>
+<body>
+    <div class="blackbar"></div>
+    <div class="top">
+        <div class="logo-div">
+            <a href="./index.html"><img src="./GadgetPro_logo.png" alt="GadgetPro-logo"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button><img width="60%" src="https://cdn-icons-png.flaticon.com/512/7289/7289312.png" alt=""></button>
+        </div>
+        <div class="login-section">
+            <h3 id="loggeduser"></h3>
+            <a href="./cart.html"><p>Cart</p></a>
+        </div>
+    </div>   
+
+<div class="navbar">
+    <div class="allcategories">
+        <button class="categoriesbtn">
+            <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+            All Categories 
+        </button>
+        <div class="categories">
+            <a href="./view1.html">Mobiles & Tablets</a>
+            <a href="./view2.html">Laptops & Computer</a>
+            <a href="./view3.html">Electronics & Office</a>
+            <a href="./view4.html">3D-Printers & Engravers</a>
+            <a href="./view5.html">Home Appliances & Garden</a>
+            <a href="./view6.html">Sports</a>
+            <a href="./view7.html">Drones & Toys</a>
+        </div>
+    </div> 
+    <a href="./homepage.html"><button>Home</button></a>
+    <a href="./viewproduct.html"><button>All Collections</button></a>
+    <a href="#news"><button>Super Deal</button></a>
+</div>
+
+<div class="cont">
+
+</div>
+
+<footer>
+    <div class="footer-div">
+        <div>
+            <h3>Company Info</h3>
+            <p>What we do</p>
+            <p>How to contact us</p>
+            <p>Where are we from</p>
+            <p>Who we are</p>
+        </div>
+        <div>
+            <h3>Customer Services</h3>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+            <p>Shipping Information</p>
+            <p>Payment and Refund</p>
+            <p>Warranty</p>
+            <p>FAQ & Email Support</p>
+        </div>
+        <div>
+            <h3>Join The Discout Tribe</h3>
+            <form action="" class="subscribe">
+                <input type="email" name="" id="email" placeholder="Enter your email">
+                <input type="submit" value="Subscribe" id="subs">
+            </form>
+            <div>
+                <img width="50%" src="./GadgetPro_logo.png" alt="">
+            </div>
+        </div>
+    </div>
+    
+  </footer>
+  
+</body>
+</html>
+
+<script>
+    
+let inuser = localStorage.getItem("loggedinuser") || "";
+document.querySelector("#loggeduser").textContent = `${inuser}`;
+console.log(inuser)
+let gridview = JSON.parse(localStorage.getItem("allitems"));
+
+let selecteditem = JSON.parse(localStorage.getItem("cart")) || [];
+
+display(gridview)
+
+function display(data){
+    for(let i=0;i<data.length;i++){
+        if(data[i].category == "electronics&office"){
+            let card = document.createElement("div");
+            let image = document.createElement("img");
+            image.setAttribute("src",data[i].image);
+            let title = document.createElement("h4");
+            title.textContent = data[i].title;
+            let price = document.createElement("p");
+            price.textContent = "₹ "+ data[i].price;
+            let btn = document.createElement("button");
+            btn.innerText = "Add to Cart";
+            btn.addEventListener("click",()=>{
+                
+                    let a = [];
+                    a.push(1);
+                    a.push(data[i]);
+                    selecteditem.push(a);
+                    localStorage.setItem("cart",JSON.stringify(selecteditem));
+                    alert("Product Added to cart..!");
+                
+            })
+            card.append(image,title,price,btn);
+            document.querySelector(".cont").append(card);
+        }
+        
+    }
+    
+}
+
+
+</script>
+

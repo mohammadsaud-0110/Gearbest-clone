@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .blackbar{
+            width: 100%;
+            height: 40px;
+            background-color: black;
+        }
+        .top{
+            display: flex;
+            width: 80%;
+            margin: auto;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-div img{
+            margin: 10px;
+            height: 90px;
+            width: 280px;
+        }
+        .top+h1+div{
+            width: 50%;
+            margin: auto;
+            height: 100px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        button{
+            border: 0px;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            background-color: rgb(0,105,255);
+        }
+        button:hover{
+            font-size: 23px;
+            padding: 12px 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="blackbar"></div>
+    <div class="top">
+        <div class="logo-div">
+            <a href="./index.html"><img src="./GadgetPro_logo.png" alt="GadgetPro-logo"></a>
+        </div>
+    </div>  
+    <h1>Admin Dashboard</h1>
+    <div>
+        <a href="./allproducts.html"><button>All Products</button></a>
+        <a href="./allusers.html"><button>All Registration</button></a>
+        <a href="./addproduct.html"><button>Add New Products</button></a>
+    </div>
+</body>
+</html>

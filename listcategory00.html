@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  /* overflow: hidden; */
+  /* border: 1px solid red; */
+  height: 50px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  /* float: left; */
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.allcategories {
+  float: left;
+  overflow: hidden;
+}
+
+.allcategories .categoriesbtn, .navbar>a>button {
+  font-size: 18px;  
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.allcategories .categoriesbtn{
+    color: white;
+    background-color: rgb(0,105,255);
+    width: 250px;
+    border-radius: 5px;
+}
+.navbar a>button:hover{
+  color: rgb(0,105,255);
+}
+.categories {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.categories a {
+  float: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.categories a:hover {
+  color: rgb(0,105,255);
+}
+.allcategories:hover .categories {
+  display: block;
+}
+</style>
+    
+</head>
+<body>
+    <div class="navbar">
+        <div class="allcategories">
+            <button class="categoriesbtn">
+                <i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                All Categories 
+            </button>
+            <div class="categories">
+            <a href="#">c 1</a>
+            <a href="#">c 2</a>
+            <a href="#">c 3</a>
+            </div>
+        </div> 
+      <a href="#home"><button>Home</button></a>
+      <a href="#home"><button>All Collections</button></a>
+      <a href="#news"><button>Super Deal</button></a>
+      
+    </div>
+    <div class="poster">
+        <img width="100%" src="https://www.gearbest.com/u_file/2212/12/photo/105254957714338494-195a.jpg?x-oss-process=image/format,webp/resize,m_lfit,h_0,w_1920" alt="">
+    </div>
+</body>
+</html>
+
+<script>
+    let allproduct = JSON.parse(localStorage.getItem("allprod"))||[];
+
+</script>

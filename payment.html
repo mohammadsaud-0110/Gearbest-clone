@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="./CSS/cart.css">
+</head>
+<body>
+    <div class="blackbar"></div>
+    <div class="top">
+        <div class="logo-div">
+            <a href="./homepage.html"><img src="./GadgetPro_logo.png" alt="GadgetPro-logo"></a>
+        </div>
+        <div class="login-section">
+            <h3 id="loggeduser"></h3>
+        </div>
+    </div>
+    <div class="delivery">
+        
+        <form action="">
+            <p>Total Items: <span id="total-item">0</span></p>
+            <p>Total Amount: <span id="total-amount">0</span></p>
+
+            <input type="text" placeholder="Enter Delivery Address" required>
+            <input type="number" placeholder="Card no. 0000/0000" required>
+            <input type="password" placeholder="Enter Pin" required>
+            <input type="submit" value="Pay" id="paybtn">
+        </form>
+    </div>
+</body>
+</html>
+<script src="./script/payment.js"></script>

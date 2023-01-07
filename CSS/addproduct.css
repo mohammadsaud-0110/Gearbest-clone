@@ -1,0 +1,119 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.form-div{
+    width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px 20px;
+}
+form:hover{
+    /* background-color: rgb(157,219,255); */
+    box-shadow: rgba(157,219,255, 1) 0px 8px 24px;
+}
+input{
+    padding: 3px 10px;
+    font-size: 15px;
+}
+.submit-button{
+    background-color: rgb(0,105,255);
+    color: white;
+    border: 0px;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-size: 18px;
+}
+.submit-button:hover{
+    background-color: rgb(0,50,255);
+}
+.submit-button:active {
+    background-color: rgb(40, 255, 112);
+    color: blue;
+    box-shadow: 0 5px rgb(117, 149, 145);
+    transform: translateY(4px);
+}
+select{
+    padding: 3px 10px;
+    font-size: 15px;
+}
+.next-button{
+    border: 0px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: rgb(0,105,255);
+    color: white;
+    border-radius: 4px;
+    margin-left: 50px;
+}
+.next-button:hover{
+    background-color: rgb(0,50,255);
+}
+.next-button:active {
+    box-shadow: 0 5px rgb(117, 149, 145);
+    transform: translateY(4px);
+}
+
+
+
+
+/* --------for alluser table-------- */
+body{
+    text-align: center;
+}
+table{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+thead{
+    background-color: teal;
+    color: white;
+}
+th{
+    padding: 5px;
+    font-size: 20px;
+}
+td{
+    padding: 5px;
+    font-size: 15px;
+}
+td{
+    background-color: rgb(212, 211, 211);
+}
+tbody button{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    color: white;
+    border: 0px;
+    padding: 3px;
+    cursor: pointer;
+    opacity: 50%;
+}
+button{
+    border: 1px solid rgb(233, 73, 153);
+    border-radius: 5px;
+    background-color: black;
+    color: rgb(233, 73, 153);
+    padding: 10px;
+    font-size: 20px;
+}
+button:hover{
+    opacity: 100%;
+}
