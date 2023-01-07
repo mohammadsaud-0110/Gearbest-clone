@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Check</title>
+    
+    <link rel="stylesheet" href="./CSS/logintest.css">
+    
+</head>
+<body>
+    <div class="blackbar"></div>
+    <div class="top">
+        <div class="logo-div">
+            <a href="./index.html"><img src="./GadgetPro_logo.png" alt="GadgetPro-logo"></a>
+        </div>
+    </div>   
+    <div class="box">
+        <div>
+            <button id="loginbtn">Login</button>
+            <button id="registerbtn">Register</button>
+        </div>
+        <div>
+            <form id="login">
+                <input id="lemail" type="email" placeholder="Enter Registered Email" required>
+                <input id="lpass" type="password" placeholder="Enter Password" required>
+                <input id="linbtn" type="submit" value="Login">
+            </form>
+
+            <form id="register">
+                <input id="rname" type="text" placeholder="Enter Full Name" required>
+                <input id="remail" type="email" placeholder="Enter New Email" required>
+                <input id="rpass" type="password" placeholder="Enter Password" required>
+                <input id="rregbtn" type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let lin = document.querySelector("#login");
+    let reg = document.querySelector("#register");
+
+    let linbtn = document.querySelector("#loginbtn");
+    let regbtn = document.querySelector("#registerbtn");
+
+    reg.style.display = "none";
+    regbtn.style.opacity = "50%";
+
+    linbtn.addEventListener("click",()=>{
+        reg.style.display = "none";
+        lin.style.display = "flex";
+        linbtn.style.opacity = "100%";
+        regbtn.style.opacity = "50%";
+    });
+
+    regbtn.addEventListener("click",()=>{
+        lin.style.display = "none";
+        reg.style.display = "flex";
+        linbtn.style.opacity = "50%";
+        regbtn.style.opacity = "100%";
+    })
+    let loginuser = localStorage.getItem("loggedinuser") || "";
+
+    let allreg = JSON.parse(localStorage.getItem("allregistration")) || [];
+    lin.addEventListener("submit",(event)=>{
+        event.preventDefault();
+        let email = document.querySelector("#lemail").value;
+        let password = document.querySelector("#lpass").value;
+        let flag = false;
+        
+        for(let i=0;i<allreg.length;i++){
+            if(email==allreg[i].email && password==allreg[i].password){
+                flag=true;
+                loginuser = allreg[i].name;
+                localStorage.setItem("loggedinuser",loginuser);
+                break;
+            }
+        }
+        if(flag){
+            window.location.href = "./homepage.html"
+        }
+        else{
+            alert("Details Incorrect!");
+        }
+    })
+
+    reg.addEventListener("submit",(event)=>{
+        event.preventDefault();
+        let name = document.querySelector("#rname").value;
+        let email = document.querySelector("#remail").value;
+        let password = document.querySelector("#rpass").value;
+        let obj = {
+            name,
+            email,
+            password
+        }
+        console.log(name,email,password);
+        allreg.push(obj);
+        localStorage.setItem("allregistration",JSON.stringify(allreg));
+        reg.reset();
+        alert("Registration Successful, login now");        
+    })
+
+
+
+
+    
+
+</script>

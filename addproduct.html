@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="./CSS/addproduct.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <div class="blackbar"></div>
+        <div class="top">
+            <div class="logo-div">
+                <a href="./admin.html"><img src="./GadgetPro_logo.png" alt="GadgetPro-logo"></a>
+            </div>
+            <div class="next-page">
+                <a href="./allusers.html"><button class="next-button">All Registrations</button></a>
+                <a href="./allproducts.html"><button class="next-button">All Products</button></a>
+            </div>
+        </div>   
+    <div class="form-div">
+        <h1>Add New Product</h1>
+        <form class="add-product-form">
+            <select name="category" id="category">
+                <option value="" hidden>Select a Category</option>
+                <option value="mobile&tablet">Mobiles & Tablets</option>
+                <option value="laptop&computer">Laptops & Computers</option>
+                <option value="electronics&office">Electronics & Office</option>
+                <option value="printer">3D Printers & Engravers</option>
+                <option value="home&garden">Home Appliances & Garden</option>
+                
+                <option value="sports">Sports</option>
+                <option value="drone&toy">Drones & Toys</option>
+              </select>
+            <input id="title" type="text" placeholder="Enter the Title of the Product" required>
+            <input id="image" type="url" placeholder="Enter the Image URL" required>
+            <input id="detail" type="text" placeholder="Enter details" required>
+            <input id="price" type="number"  placeholder="Enter Price" required>
+            <input type="submit" value="Add Product" class="submit-button">
+        </form>
+    </div>
+</body>
+</html>
+<script src="./script/addproduct.js"></script>
